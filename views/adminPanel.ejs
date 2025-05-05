@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="../style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+
+  <h2 style="text-align:center;">Student Information Table</h2>
+   <div>
+    <button type="button" class="data_add" id="add_data" onclick="openModal()">Add Student Data</button>
+   </div>
+  <table class="table-row">
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Action</th>
+    </tr>
+    <% user.forEach((user,index) => { %>
+    <tr>
+      <td><%= index+1 %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email%></td>
+      <td><%= user.age %></td>
+      <td>
+        <button class="btn-edite" onclick="return openEdite('<%= user._id%>','<%= user.name%>','<%= user.age%>','<%= user.email%>')" id="edit-data">Edit</button>
+       <a href='/deleteData?id=<%= user._id%>'><button class="btn-delete">Delete</button></a>
+      </td>
+    </tr>
+    <% }); %>
+  </table>
+
+
+  <div class="modal" id="studentModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Student Data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()" id="btn-close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/addData" method="post" >
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <input type="submit"></button>
+            </form>
+          </div>          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add Student Data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeModal()" id="btn-close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="editData" method="post">
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="std-name" name="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="std-age" name="age" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="std-email" name="email" required>
+              </div>
+              <input type="submit"></button>
+            </form>
+          </div>          
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+   function openModal(){
+    document.getElementById('studentModal').style.display='block';
+   }
+  function closeModal(){
+    document.getElementById('studentModal').style.display = 'none'
+  }
+  function openEdite(id,name,age,email){
+   console.log(id)
+   const form = document.getElementById('editData')
+   form.method = 'POST';
+   form.action = `/editData?userId=${id}`;
+   document.getElementById('editModal').style.display = 'block'
+   document.getElementById('std-name').value = name
+   document.getElementById('std-age').value = age
+   document.getElementById('std-email').value = email
+
+  }
+  function editClose(){
+    document.getElementById('editModal').style.display = 'none'
+  }
+  </script>
+
+</body>
+</html>
