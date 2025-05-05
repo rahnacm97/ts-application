@@ -22,7 +22,7 @@ export default class StudentData{
           email
         }
         await User.insertOne(newData);
-        res.redirect('/')
+        res.redirect('/');
        return
       } catch (error) {
         console.log('student data is not getting',error);
@@ -35,7 +35,8 @@ export default class StudentData{
       const {name,age,email} = req.body
 
       await User.findByIdAndUpdate(id,{name,email,age})
-      res.redirect('/')
+      res.redirect('/');
+    
       return;
       } catch (error) {
         console.log('student data editing error',error);
@@ -46,10 +47,11 @@ export default class StudentData{
       try {
         const id = req.query.id
         await User.findByIdAndDelete(id);
-        res.redirect('/')
+        res.redirect('/');
         return;
       } catch (error) {
         console.log('user data deleting error',error);
+  
       }
     }
 }

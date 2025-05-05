@@ -12,7 +12,7 @@
   }
 
   .table-row th {
-    background-color: #4CAF50;
+    background-color: #192e96;
     color: white;
   }
 
@@ -28,18 +28,24 @@
     font-size: 16px;
   }
   .data_add{
-  background-color: rgb(70, 214, 70);
+  background-color: rgb(22, 31, 154);
   margin-left: 1000px;
   padding: 10px;
   border-radius: 15px;
-  border-color: lightblue;
+  border-color: rgb(11, 21, 130);
   color: white;
   }
   .btn-edite{
-    background-color: rgb(49, 49, 239);
+    background-color: rgb(15, 141, 63);
     color: white;
+    border-radius: 15px;
+    padding: 5px 20px;
+    border-color: rgb(18, 167, 63);
   }
   .btn-delete{
     background-color: red;
     color: white;
+    border-radius: 15px;
+    padding: 5px 20px;
+    border-color: rgb(242, 28, 8);
   }

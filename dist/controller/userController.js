@@ -27,8 +27,7 @@ class StudentData {
     }
     addStudentsData(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                console.log('1');
+            try {              
                 const { name, age, email } = req.body;
                 const newData = {
                     name,
@@ -44,10 +43,9 @@ class StudentData {
             }
         });
     }
-    editeStudentData(req, res) {
+    editStudentData(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log('1');
                 const id = req.query.userId;
                 const { name, age, email } = req.body;
                 yield userModel_1.default.findByIdAndUpdate(id, { name, email, age });

@@ -9,6 +9,6 @@ const router = (0, express_1.Router)();
 const alterStudents = new userController_1.default();
 router.get('/', alterStudents.loadAdminPanel);
 router.post('/addData', alterStudents.addStudentsData);
-router.post('/editData', alterStudents.editeStudentData);
+router.post('/editData', alterStudents.editStudentData);
 router.get('/deleteData', alterStudents.deleteStudentData);
 exports.default = router;
